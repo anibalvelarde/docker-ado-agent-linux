@@ -4,7 +4,7 @@
 
 This Docker image was inspired by [cywl/azureagent](https://hub.docker.com/r/cywl/azureagent) image. In that case, it uses a much more secure way of authorizing your docker user.
 
-If you are here, is probably because you want to run a self-hosted ADO Agent in a Docker Container and your ADO instance is on-prem and it does not have an TLS Cert (i.e. you have to reach it over HTTP, as in \_http://my-host-machine:8080/tfs). You probably also found the `cywl/azureagent` image, but that one uses PAT which require you to use TLS (HTTPS).
+If you are here, is probably because you want to run a self-hosted ADO Agent in a Docker Container and your ADO instance is on-prem and it does not have an TLS Cert (i.e. you have to reach it over HTTP, as in \_http://my-host-machine:8080/tfs). You probably also found the `cywl/azureagent` image, but that one uses PAT which requires you to use TLS (HTTPS).
 
 With this image, we took `cywl/azureagent` and removed the use of `auth` set to `PAT` tokens and added the `username` and `password` parameters for authetnication with the `auth` set to `Negotiate`. If you compare the
 
@@ -21,7 +21,14 @@ We were able to paint and publish a new Docker Image to Docker Hub. We called it
 - `AZP_POOL` - Agent pool name (default value: Default).
 - `AZP_WORK` - Work directory (default value: \_work).
 
-### Example:
+### Example to pull the image
+
+```
+docker pull anibalvelarde/httpazureagent
+
+```
+
+### Example to run the image
 
 ```
 docker run -d
