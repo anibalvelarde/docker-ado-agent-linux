@@ -60,13 +60,14 @@ print_header "1. Configuring Azure Pipelines agent..."
 ./config.sh --unattended \
   --agent "${AZP_AGENT_NAME:-$(hostname)}" \
   --url "$AZP_URL" \
-  --auth Negotiate \
+  --auth negotiate \
   --username "$AZP_USERNAME" \
   --password $(cat "$AZP_PSWD_FILE") \
   --pool "${AZP_POOL:-Default}" \
   --work "${AZP_WORK:-_work}" \
   --replace \
-  --acceptTeeEula & wait $!
+  --acceptTeeEula \
+  --sslSkipCertValidation & wait $!
 AZP_PSWD=***
 print_header "2. Running Azure Pipelines agent..."
 
