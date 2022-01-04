@@ -21,7 +21,7 @@ if [ -z "$AZP_PSWD_FILE" ]; then
   echo -n $AZP_PSWD > "$AZP_PSWD_FILE"
 fi
 
-unset AZP_TOKEN
+unset AZP_PSWD
 
 if [ -n "$AZP_WORK" ]; then
   mkdir -p "$AZP_WORK"
@@ -51,7 +51,7 @@ print_header() {
 }
 
 # Let the agent ignore the token env variables
-export VSO_AGENT_IGNORE=AZP_TOKEN,AZP_TOKEN_FILE
+export VSO_AGENT_IGNORE=AZP_PSWD,AZP_PSWD_FILE
 
 source ./env.sh
 
@@ -67,7 +67,7 @@ print_header "1. Configuring Azure Pipelines agent..."
   --work "${AZP_WORK:-_work}" \
   --replace \
   --acceptTeeEula & wait $!
-
+AZP_PSWD=***
 print_header "2. Running Azure Pipelines agent..."
 
 trap 'cleanup; exit 0' EXIT
