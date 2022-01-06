@@ -5,7 +5,7 @@
 # This version needs to use NTLM. The gss-ntlmssp depenency was added to the
 # Dockerfile listed on the article
 #
-FROM ubuntu:18.04
+FROM ubuntu:21.04
 
 # To make it easier for build and release pipelines to run apt-get,
 # configure apt to not require confirmation (assume the -y argument by default)
