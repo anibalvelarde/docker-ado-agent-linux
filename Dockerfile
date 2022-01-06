@@ -2,7 +2,7 @@
 # Link: https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/docker?view=azure-devops
 #
 #
-# This version needs to use NTLM. The gss-ntlmssp depenency was added to the
+# This version needs to use NTLM. The gss-ntlmssp depenency was added t o the
 # Dockerfile listed on the article
 #
 FROM ubuntu:21.04
@@ -20,7 +20,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     iputils-ping \
     libcurl4 \
-    libicu60 \
     libunwind8 \
     netcat \
     libssl1.0 \
