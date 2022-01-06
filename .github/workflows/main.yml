@@ -6,6 +6,9 @@
 #
 # This GitHub Actions File was based on this GitHub document:
 # https://docs.github.com/en/actions/publishing-packages/publishing-docker-images
+#
+#
+# To activate this GitHub Action yml, ensure that the commit is 
 
 name: Publish Docker image
 
