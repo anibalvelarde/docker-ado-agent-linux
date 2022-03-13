@@ -3,8 +3,8 @@
 # Must have an Azure DevOps PAT token for your account
 
 # Do not do anything if the image is already running
-clear; MyVar=$(docker inspect --format='{{.Config.Image}}' $(docker ps -q) | grep cywl/azureagent | wc -l)
-if [ $MyVar == '0' ]
+clear; IsTargetImageRunning=$(docker inspect --format='{{.Config.Image}}' $(docker ps -q) | grep cywl/azureagent | wc -l)
+if [ $IsTargetImageRunning == '0' ]
 then
     echo "Starting ADO Linux Agent - cywl/azureagent"
     # Ensure we have the latest image
