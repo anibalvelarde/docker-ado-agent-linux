@@ -2,9 +2,13 @@
 # Script to start running an ADO Linux Agent on Docker
 # Must have an Azure DevOps PAT token for your account
 
+# Extract the PAT token
+clear; my_pat_token=$(head -n 1 ../.user/my_pat_token | sed 's/^[ ]*//')
+echo "My PAT: " $my_pat_token
+
 # Do not do anything if the image is already running
-clear; IsTargetImageRunning=$(docker inspect --format='{{.Config.Image}}' $(docker ps -q) | grep cywl/azureagent | wc -l)
-if [ $IsTargetImageRunning == '0' ]
+IsTargetImageRunning=$(docker inspect --format='{{.Config.Image}}' $(docker ps -q && echo "image-list") | grep cywl/azureagent | wc -l)
+if [ $IsTargetImageRunning == '0' ] && [ -n $patToken ]
 then
     echo "Starting ADO Linux Agent - cywl/azureagent"
     # Ensure we have the latest image
@@ -12,7 +16,7 @@ then
     # Run cywl/azure-agent docker image
     docker run -d \
       -e "AZP_URL=https://dev.azure.com/anibalcincovelarde" \
-      -e "AZP_TOKEN=wy4wlu4usf5z6fvb6toeorebrlt3rcy6afk7th6cvqks6pzqum4a" \
+      -e "AZP_TOKEN=$my_pat_token" \
       -e "AZP_AGENT_NAME=homebrewedagent" \
       -e "AZP_POOL=a5vAgentPool" \
       -e "AZP_WORK=_work" \
