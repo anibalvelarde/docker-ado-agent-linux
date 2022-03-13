@@ -4,7 +4,7 @@
 
 # Extract the PAT token
 clear; my_pat_token=$(head -n 1 ../.user/my_pat_token | sed 's/^[ ]*//')
-echo "My PAT: " $my_pat_token
+#echo "My PAT: " $my_pat_token
 
 # Do not do anything if the image is already running
 IsTargetImageRunning=$(docker inspect --format='{{.Config.Image}}' $(docker ps -q && echo "image-list") | grep cywl/azureagent | wc -l)
