@@ -23,5 +23,5 @@ then
       cywl/azureagent
     echo "Running in the background..."
 else
-    echo "Agent is not running, use script to stop it, stop-ado-linux.agent.sh"
+    echo "Agent is running, use script to stop it, stop-ado-linux.agent.sh"
 fi
