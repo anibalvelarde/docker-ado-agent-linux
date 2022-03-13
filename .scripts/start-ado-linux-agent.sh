@@ -15,7 +15,7 @@ then
     docker pull cywl/azureagent
     # Run cywl/azure-agent docker image
     docker run -d \
-      -v /var/run/docker.sock:/var/run/docker.sock \
+      -v //var/run/docker.sock:/var/run/docker.sock \
       -e "AZP_URL=https://dev.azure.com/anibalcincovelarde" \
       -e "AZP_TOKEN=$my_pat_token" \
       -e "AZP_AGENT_NAME=homebrewedagent" \
